@@ -291,7 +291,20 @@ body[data-theme="teal"] .dots button.active{background:var(--ink);border-color:v
 #s4 .three .card:nth-child(2){transform:skewY(-5deg) translateY(0);animation-delay:.16s}
 #s4 .three .card:nth-child(3){transform:skewY(-5deg) translateY(-12px);animation-delay:.27s}
 #s4 .three .card:hover{transform:skewY(0deg) translateY(-12px) scale(1.03);z-index:5;box-shadow:0 28px 56px -14px rgba(0,202,158,.32),0 6px 14px rgba(13,13,13,.1)}
-#s4 .note{margin-top:clamp(42px,5vw,60px)}
+#s4 .cqc{margin-top:clamp(42px,5vw,60px)}
+#s4 .note{margin-top:clamp(18px,2vw,26px)}
+/* ════ CQC · bloco preto (o ciclo que retroalimenta) ════ */
+.cqc{background:var(--ink);color:#fff;border-radius:18px;padding:clamp(26px,3.2vw,38px);position:relative;overflow:hidden;border-left:4px solid var(--teal);box-shadow:0 22px 54px -18px rgba(0,0,0,.45)}
+.cqc .cqc-glow{position:absolute;right:-8%;top:-60%;width:48%;height:220%;background:radial-gradient(circle,rgba(0,202,158,.22),transparent 62%);pointer-events:none}
+.cqc>*{position:relative;z-index:1}
+.cqc .c-tag{color:var(--teal);margin-bottom:10px;font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:1px;font-weight:700;display:flex;align-items:center;gap:8px}
+.cqc .cqc-title{font-size:clamp(26px,4.2vw,44px);font-weight:900;letter-spacing:-.02em;margin-bottom:12px;line-height:1}
+.cqc .cqc-title span{color:var(--teal);font-weight:700;font-size:.4em;letter-spacing:0}
+.cqc .cqc-desc{font-size:14px;line-height:1.65;color:#cdd3d0;max-width:66ch}
+.cqc .cqc-desc b{color:#fff;font-weight:600}
+.cqc .cqc-loop{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:20px}
+.cqc .cqc-loop span{background:rgba(0,202,158,.13);color:var(--teal);border:1px solid rgba(0,202,158,.32);border-radius:30px;padding:7px 13px;font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;white-space:nowrap}
+.cqc .cqc-loop i{color:var(--teal);font-style:normal;font-size:14px;font-weight:700}
 
 /* ── ENTRADA: animação 100% CSS ── */
 @keyframes kp-rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
@@ -405,7 +418,14 @@ body[data-theme="teal"] .dots button.active{background:var(--ink);border-color:v
       <div class="card accent layer-card reveal" data-d="2"><span class="lc-n">02</span><div class="c-tag"><span class="spark">✳</span> conversão direta</div><h3>WhatsApp · Advantage+</h3><div class="c-role">Campanha de conversa otimizada. <b style="color:inherit">O algoritmo acha quem está pronto</b> e manda direto pro WhatsApp.</div><div class="c-foot">→ o motor de leads</div></div>
       <div class="card accent layer-card reveal" data-d="3"><span class="lc-n">03</span><div class="c-tag"><span class="spark">✳</span> fundo</div><h3>Retargeting → WhatsApp</h3><div class="c-role">Cerca quem já interagiu, com <b style="color:inherit">urgência de prazo</b> ("17 vagas", "últimos dias 2026.2").</div><div class="c-foot">→ fecha o cerco</div></div>
     </div>
-    <div class="note reveal" data-d="4"><span class="n-k">a regra de ouro do destino</span><b>Destino sempre WhatsApp</b>, com triagem na 1ª mensagem. O site entra <b>só pra remarketing quente</b>. A decisão acontece na conversa.</div>
+    <div class="cqc reveal" data-d="4">
+      <div class="cqc-glow"></div>
+      <div class="c-tag"><span class="spark">✳</span> a inteligência que fecha o ciclo</div>
+      <h3 class="cqc-title">CQC <span>· o motor que aprende</span></h3>
+      <div class="cqc-desc">Devolve pras plataformas <b>quais leads viraram qualificados</b>. O Meta e o Google aprendem com isso e passam a caçar <b>mais gente parecida com quem converte</b>. É o que faz as 3 camadas <b>se alimentarem</b> e ficarem mais inteligentes sozinhas.</div>
+      <div class="cqc-loop"><span>leads</span><i>→</i><span>CQC lê o qualificado</span><i>→</i><span>volta pro Meta + Google</span><i>→</i><span>mais leads qualificados</span><i>↺</i></div>
+    </div>
+    <div class="note reveal" data-d="5"><span class="n-k">a regra de ouro do destino</span><b>Destino sempre WhatsApp</b>, com triagem na 1ª mensagem. O site entra <b>só pra remarketing quente</b>. A decisão acontece na conversa.</div>
   </div>
 </section>
 
