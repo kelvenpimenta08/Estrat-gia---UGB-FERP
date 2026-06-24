@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estratégia Meta Ads · UGB / FERP · Captura do Insatisfeito · Keepads</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ════════════════════════════════════════════════════════════════════
+   KEEPADS · ESTRATÉGIA META ADS · UGB / FERP · "Captura do Insatisfeito"
+   Direção: brutalista-editorial + identidade Keepads
+   Leitura em 2 camadas: frase leiga (Poppins) + dado técnico (mono)
+   Ritmo de cor: INK · PAPER · TEAL · Entrada: animação 100% CSS
+   ════════════════════════════════════════════════════════════════════ */
+:root{
+  --ink:#0D0D0D; --ink-2:#141719; --ink-3:#1c2023;
+  --teal:#00CA9E; --teal-d:#00a884; --teal-glow:#2bffcf;
+  --paper:#f3f4f1; --greige:#e7e4da; --white:#ffffff;
+  --mute:#8a918e; --mute-d:#5f6663; --red:#e5675f;
+  --line-d:rgba(255,255,255,.12); --line-l:#dcdfdb;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-snap-type:y proximity;scroll-behavior:smooth}
+body{font-family:'Poppins',system-ui,sans-serif;background:var(--ink);color:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;z-index:9000;pointer-events:none;opacity:.04;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.mono{font-family:'JetBrains Mono',monospace}
+
+/* ── SLIDES ── */
+.slide{position:relative;min-height:100svh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;padding:clamp(28px,5.5vw,80px) clamp(26px,5.5vw,80px);overflow-x:clip}
+#s0,.divider,.goal,.close{overflow:hidden}
+.slide.ink{background:var(--ink);color:#fff}
+.slide.teal{background:var(--teal);color:var(--ink)}
+.slide.paper{background:var(--paper);color:var(--ink)}
+.wrap{width:100%;max-width:1180px;margin:0 auto}
+
+/* ── TOPO + DOTS ── */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:8000;display:flex;justify-content:space-between;align-items:center;padding:18px clamp(20px,4vw,38px);pointer-events:none}
+.kp-logo{font-weight:800;font-size:16px;letter-spacing:-.5px;display:flex;align-items:center}
+.kp-logo b{color:var(--teal)}
+.kp-logo .dot{width:6px;height:6px;border-radius:50%;background:var(--teal);margin-left:2px;margin-bottom:-1px}
+.mode-hint{font-size:9.5px;letter-spacing:2px;text-transform:uppercase;opacity:.55;font-family:'JetBrains Mono',monospace}
+.dots{position:fixed;right:clamp(12px,2vw,26px);top:50%;transform:translateY(-50%);z-index:8000;display:flex;flex-direction:column;gap:11px}
+.dots button{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--mute);background:transparent;cursor:pointer;padding:0;transition:.3s}
+.dots button.active{background:var(--teal);border-color:var(--teal);transform:scale(1.4)}
+/* tema da topbar/dots conforme o fundo · logo SEMPRE verde Keepads, nunca vermelho */
+.kp-logo{color:#fff;transition:color .3s}.mode-hint{transition:color .3s}
+body[data-theme="paper"] .kp-logo{color:var(--ink)}
+body[data-theme="paper"] .kp-logo b{color:var(--teal-d)}
+body[data-theme="paper"] .kp-logo .dot{background:var(--teal-d)}
+body[data-theme="paper"] .mode-hint{color:var(--mute-d)}
+body[data-theme="paper"] .dots button{border-color:var(--mute-d)}
+body[data-theme="paper"] .dots button.active{background:var(--teal-d);border-color:var(--teal-d)}
+body[data-theme="teal"] .kp-logo{color:var(--ink)}
+body[data-theme="teal"] .kp-logo b{color:var(--ink)}
+body[data-theme="teal"] .kp-logo .dot{background:var(--ink)}
+body[data-theme="teal"] .mode-hint{color:var(--ink);opacity:.6}
+body[data-theme="teal"] .dots button{border-color:rgba(13,13,13,.45)}
+body[data-theme="teal"] .dots button.active{background:var(--ink);border-color:var(--ink)}
+
+/* ── MARCA ── */
+.spark{color:var(--teal);display:inline-block}
+.eyebrow{font-size:clamp(10px,1vw,12px);letter-spacing:3px;text-transform:uppercase;font-weight:600;display:flex;align-items:center;gap:11px;flex-wrap:wrap}
+.eyebrow .b-dot{width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0}
+.sec-no{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--teal-d);letter-spacing:1px}
+.slide.ink .sec-no{color:var(--teal)}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1.4px solid currentColor;border-radius:40px;padding:6px 15px;font-size:11.5px;font-weight:600;letter-spacing:.3px}
+.pill.solid{background:var(--ink);color:#fff;border-color:var(--ink)}
+.giant{font-weight:900;text-transform:lowercase;line-height:.86;letter-spacing:-.045em}
+.statement{font-size:clamp(1.6rem,3.8vw,3.2rem);font-weight:800;line-height:1.07;letter-spacing:-.02em}
+.statement em{color:var(--teal-d);font-style:normal}
+.slide.ink .statement em{color:var(--teal)}
+.tech-chip{display:inline-flex;align-items:center;gap:9px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--mute-d);background:var(--white);border:1px solid var(--line-l);border-radius:8px;padding:8px 13px;line-height:1.5}
+.slide.ink .tech-chip{background:var(--ink-2);border-color:var(--line-d);color:#aeb4b1}
+.tech-chip .t-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0}
+.shead{margin-bottom:clamp(24px,3.2vw,38px)}
+.shead .eyebrow{margin-bottom:15px}
+.slide.paper .eyebrow{color:var(--teal-d)}
+
+/* ════ CAPA ════ */
+.cover-bg{position:absolute;inset:0;pointer-events:none}
+.cover-bg .glow{position:absolute;width:62vw;height:62vw;right:-16vw;top:-18vw;border-radius:50%;background:radial-gradient(circle,rgba(0,202,158,.22),transparent 62%);filter:blur(18px)}
+.cover-bg .mark{position:absolute;left:-5vw;bottom:-14vw;font-size:46vw;line-height:1;color:#fff;opacity:.028;font-weight:900}
+.cover-top{display:flex;justify-content:space-between;align-items:flex-start;position:relative;z-index:2}
+.cover-spark{font-size:clamp(38px,6vw,82px);color:var(--teal);line-height:.6;filter:drop-shadow(0 0 30px rgba(0,202,158,.4))}
+.cover-mid{position:relative;z-index:2;margin:auto 0}
+.cover-mid .eyebrow{color:var(--teal);margin-bottom:20px}
+.client-name{font-size:clamp(3.2rem,15vw,12rem)}
+.client-name .a{color:#eef2f0}.client-name .b{color:var(--teal)}
+.cover-codename{display:inline-flex;align-items:center;gap:10px;margin-top:clamp(30px,4vw,54px);font-size:clamp(15px,2vw,24px);font-weight:800;color:#fff;letter-spacing:-.3px}
+.cover-codename .cc-tag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink);background:var(--teal);padding:5px 10px;border-radius:6px}
+.cover-sub{font-size:clamp(12.5px,1.4vw,16px);color:var(--mute);font-weight:500;margin-top:16px}
+.cover-tags{display:flex;gap:9px;margin-top:18px;flex-wrap:wrap}
+.cover-bottom{display:flex;justify-content:space-between;align-items:flex-end;position:relative;z-index:2;gap:18px;flex-wrap:wrap;border-top:1px solid var(--line-d);padding-top:20px}
+.channels{display:flex;gap:7px;flex-wrap:wrap}
+.chan{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;border:1px solid var(--line-d);border-radius:30px;padding:6px 12px;color:#cdd3d0}
+.chan .c-dot{width:6px;height:6px;border-radius:50%;background:var(--teal)}
+.cover-by{font-size:11px;color:var(--mute-d)}.cover-by b{color:#cdd3d0;font-weight:600}
+.scroll-hint{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--mute);display:flex;flex-direction:column;align-items:center;gap:7px;z-index:2;font-family:'JetBrains Mono',monospace}
+.scroll-hint .arr{font-size:15px;animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(6px);opacity:1}}
+
+/* ════ DIVISOR ════ */
+.divider{justify-content:center}
+.divider .giant{font-size:clamp(3.2rem,15vw,13rem);margin:6px 0 clamp(30px,4.5vw,52px)}
+.divider .sub{display:flex;align-items:center;gap:16px;font-size:clamp(15px,2.2vw,28px);font-weight:600;text-transform:lowercase;flex-wrap:wrap}
+.divider .arrow-pill{display:inline-flex;align-items:center;justify-content:center;width:clamp(52px,6.5vw,80px);height:clamp(33px,4vw,48px);border:2px solid var(--ink);border-radius:40px;font-size:21px}
+.divider .tag-tl{position:absolute;top:clamp(26px,5.5vw,80px);right:clamp(26px,5.5vw,80px);font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:1px;border:1.4px solid var(--ink);border-radius:30px;padding:7px 14px;font-weight:500}
+.divider .bigspark{position:absolute;left:-4vw;bottom:-9vw;font-size:40vw;color:rgba(13,13,13,.06);font-weight:900;line-height:1}
+
+/* ════ GRIDS / CARDS ════ */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--white);border:1px solid var(--line-l);border-radius:18px;padding:24px;box-shadow:0 1px 2px rgba(13,13,13,.03)}
+.slide.ink .card{background:var(--ink-2);border-color:var(--line-d)}
+.card.accent{border-left:3px solid var(--teal)}
+.card .c-tag{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:1px;font-weight:700;color:var(--teal-d);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.slide.ink .card .c-tag{color:var(--teal)}
+.card h3{font-size:18px;font-weight:800;letter-spacing:-.3px;margin-bottom:6px}
+.card .c-role{font-size:12.5px;color:var(--mute-d);line-height:1.55}
+.slide.ink .card .c-role{color:#aeb4b1}
+.card .c-foot{margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink);font-weight:700;border-top:1px solid var(--line-l);padding-top:12px}
+.slide.ink .card .c-foot{color:#fff;border-color:var(--line-d)}
+.tag-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.tg{font-size:11px;font-weight:600;background:var(--greige);color:var(--mute-d);border-radius:20px;padding:5px 10px}
+.slide.ink .tg{background:var(--ink-3);color:#aeb4b1}
+.tg.hot{background:rgba(0,202,158,.14);color:var(--teal-d)}
+.slide.ink .tg.hot{color:var(--teal)}
+
+/* ── NOTE ── */
+.note{background:var(--white);border:1px solid var(--line-l);border-left:3px solid var(--teal);border-radius:13px;padding:15px 19px;font-size:12.5px;line-height:1.6;color:var(--mute-d);margin-top:18px}
+.slide.ink .note{background:var(--ink-2);border-color:var(--line-d);border-left-color:var(--teal);color:#aeb4b1}
+.note b{color:var(--ink);font-weight:600}.slide.ink .note b{color:#fff}
+.note .n-k{font-family:'JetBrains Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:1.2px;color:var(--teal-d);font-weight:700;display:block;margin-bottom:6px}
+.slide.ink .note .n-k{color:var(--teal)}
+
+/* ── LAYERS ── */
+.layers{display:flex;flex-direction:column;gap:13px;margin-top:2px}
+.layer .ly-k{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:var(--mute-d);font-weight:700;margin-bottom:7px;display:flex;align-items:center;gap:7px}
+.slide.ink .layer .ly-k{color:var(--mute)}
+.layer .ly-k::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0}
+.layer .ly-txt{font-size:12px;line-height:1.55;color:var(--mute-d)}
+.slide.ink .layer .ly-txt{color:#aeb4b1}
+.layer.excl .ly-k{color:var(--red)}.layer.excl .ly-k::before{background:var(--red)}
+.layer .ly-txt b{color:var(--ink);font-weight:600}.slide.ink .layer .ly-txt b{color:#fff}
+
+/* ── DETAIL ── */
+.detail{display:flex;flex-direction:column;gap:9px;margin-top:8px}
+.detail li{list-style:none;font-size:12.5px;line-height:1.5;color:var(--mute-d);padding-left:19px;position:relative}
+.slide.ink .detail li{color:#aeb4b1}
+.detail li::before{content:'+';position:absolute;left:0;top:-1px;color:var(--teal-d);font-weight:800}
+.slide.ink .detail li::before{color:var(--teal)}
+.detail li b{color:var(--ink);font-weight:600}.slide.ink .detail li b{color:#fff}
+.detail.num li::before{content:counter(d);counter-increment:d;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--teal-d)}
+.detail.num{counter-reset:d 0}
+
+/* ════ META ════ */
+.goal{justify-content:center;text-align:center;align-items:center}
+.goal .glow{position:absolute;width:72vw;height:72vw;left:50%;top:46%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(0,202,158,.15),transparent 60%);pointer-events:none}
+.goal .inner{position:relative;z-index:2;width:100%;max-width:980px}
+.goal .eyebrow{justify-content:center;color:var(--teal);margin-bottom:20px}
+.goal .pre{font-size:clamp(14px,1.8vw,20px);font-weight:600;color:var(--mute);text-transform:lowercase}
+.goal .num{font-weight:900;letter-spacing:-.04em;line-height:.9;font-size:clamp(4rem,16vw,14rem);color:var(--teal);text-shadow:0 0 80px rgba(0,202,158,.32);font-variant-numeric:tabular-nums}
+.goal .num .cur{font-size:.4em;vertical-align:.34em;color:#eef2f0;margin-right:.04em}
+.goal .num .suf{font-size:.22em;vertical-align:.55em;color:#eef2f0;font-weight:700;letter-spacing:0;text-transform:lowercase}
+.goal-prod{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:36px;text-align:left}
+.gp{background:var(--ink-2);border:1px solid var(--line-d);border-radius:16px;padding:22px 24px;border-top:3px solid var(--teal)}
+.gp .gp-name{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#fff;margin-bottom:14px;display:flex;align-items:center;gap:9px}
+.gp .gp-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-top:1px solid var(--line-d);font-size:13px}
+.gp .gp-row:first-of-type{border-top:none}
+.gp .gp-row .l{color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:11px}
+.gp .gp-row .v{font-weight:800;font-variant-numeric:tabular-nums}.gp .gp-row .v.tl{color:var(--teal)}
+.goal-note{margin-top:24px;font-size:12px;color:var(--mute);max-width:720px;margin-inline:auto;line-height:1.6}
+.goal-note b{color:#cdd3d0}
+
+/* ════ MODELO 3 CAMADAS / CARDS DE FLUXO ════ */
+.layer-card{position:relative}
+.layer-card .lc-n{position:absolute;top:18px;right:20px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--line-l)}
+.slide.ink .layer-card .lc-n{color:var(--ink-3)}
+
+/* ════ VERBA / CAMADAS DIÁRIAS ════ */
+.budget{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.b-row{display:flex;align-items:center;gap:12px}
+.b-lbl{width:180px;flex-shrink:0;font-size:12px;font-weight:600;line-height:1.25}
+.b-lbl span{display:block;font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--mute-d);font-weight:500;margin-top:2px}
+.slide.ink .b-lbl span{color:var(--mute)}
+.b-track{flex:1;height:30px;background:var(--greige);border-radius:7px;overflow:hidden}
+.slide.ink .b-track{background:var(--ink-3)}
+.b-fill{height:100%;border-radius:7px;display:flex;align-items:center;padding:0 12px;color:#fff;font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;transform-origin:left;white-space:nowrap}
+.b-val{width:74px;flex-shrink:0;text-align:right;font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;font-variant-numeric:tabular-nums}
+.budget-total{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--line-l);font-size:12px;color:var(--mute-d)}
+.slide.ink .budget-total{border-color:var(--line-d);color:#aeb4b1}
+.budget-total b{font-size:17px;color:var(--ink);font-weight:800}.slide.ink .budget-total b{color:#fff}
+
+/* meta-line (geo/idade) */
+.meta-line{display:flex;flex-wrap:wrap;gap:18px;margin:2px 0 16px}
+.ml{font-size:12px}
+.ml .ml-k{font-family:'JetBrains Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:.8px;color:var(--mute-d);font-weight:700;display:block;margin-bottom:3px}
+.slide.ink .ml .ml-k{color:var(--mute)}
+.ml .ml-v{font-weight:700;font-size:13px}
+
+/* ════ STAT / OPERAÇÃO ════ */
+.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.stat{background:var(--white);border:1px solid var(--line-l);border-radius:16px;padding:22px;border-left:3px solid var(--line-l)}
+.slide.ink .stat{background:var(--ink-2);border-color:var(--line-d);border-left-color:var(--line-d)}
+.stat.tl{border-left-color:var(--teal)}
+.stat .s-lbl{font-size:10.5px;text-transform:uppercase;letter-spacing:1px;color:var(--mute-d);font-weight:600}
+.slide.ink .stat .s-lbl{color:var(--mute)}
+.stat .s-val{font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-.5px;margin-top:7px;font-variant-numeric:tabular-nums;line-height:1.05}
+.bighero{background:var(--ink-2);border:1px solid var(--line-d);border-radius:18px;border-left:4px solid var(--teal);padding:30px 32px;display:flex;align-items:center;gap:30px;flex-wrap:wrap}
+.bighero .bh-num{font-size:clamp(46px,7vw,90px);font-weight:900;color:var(--teal);letter-spacing:-.04em;line-height:.9;text-shadow:0 0 50px rgba(0,202,158,.3)}
+.bighero .bh-num .bh-u{font-size:.3em;font-weight:700;letter-spacing:0;margin-left:.16em}
+.bighero .bh-t{flex:1;min-width:220px}
+.bighero .bh-h{font-size:18px;font-weight:800;margin-bottom:6px}
+.bighero .bh-p{font-size:13px;color:#aeb4b1;line-height:1.55}
+
+/* ════ TIMELINE ════ */
+.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
+.tl-phase{background:var(--white);border:1px solid var(--line-l);border-radius:16px;padding:22px 20px}
+.slide.ink .tl-phase{background:var(--ink-2);border-color:var(--line-d)}
+.tl-phase .tl-bar{height:4px;border-radius:4px;background:var(--teal);margin-bottom:16px;opacity:.4}
+.tl-phase:nth-child(2) .tl-bar{opacity:.6}.tl-phase:nth-child(3) .tl-bar{opacity:.8}.tl-phase:nth-child(4) .tl-bar{opacity:1}
+.tl-phase .tl-k{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--teal-d);text-transform:uppercase;letter-spacing:1px;font-weight:700}
+.slide.ink .tl-phase .tl-k{color:var(--teal)}
+.tl-phase .tl-when{font-size:11px;color:var(--mute-d);margin:3px 0 12px;font-family:'JetBrains Mono',monospace}
+.tl-phase .tl-h{font-size:16px;font-weight:800;text-transform:lowercase;margin-bottom:10px}
+.tl-phase .tl-p{font-size:11.5px;color:var(--mute-d);line-height:1.55}
+.slide.ink .tl-phase .tl-p{color:#aeb4b1}
+@media(max-width:820px){.timeline{grid-template-columns:1fr 1fr}}
+
+/* ════ KPIs (5 colunas) ════ */
+.kpi-table{background:var(--white);border:1px solid var(--line-l);border-radius:18px;overflow:hidden}
+.kpi-row{display:grid;grid-template-columns:1.2fr .9fr .9fr .9fr 1.1fr;align-items:center}
+.kpi-row.head{background:var(--greige)}
+.kpi-row:not(.head){border-top:1px solid var(--line-l)}
+.kpi-row.head div{font-family:'JetBrains Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:.8px;color:var(--mute-d);font-weight:700;padding:14px 16px}
+.kpi-row .kc{padding:18px 16px;font-variant-numeric:tabular-nums;font-size:13px}
+.kpi-row .kc.prod{font-weight:800;font-size:15px}
+.kpi-row .kc .big{font-size:20px;font-weight:800;color:var(--teal-d)}
+.kpi-row .kc small{display:block;font-size:10px;color:var(--mute-d);font-weight:500;margin-top:2px;font-family:'JetBrains Mono',monospace}
+.king{margin-top:18px;background:var(--ink);color:#fff;border-radius:14px;padding:18px 22px;font-size:13.5px;line-height:1.6}
+.king b{color:var(--teal)}
+@media(max-width:820px){.kpi-row{grid-template-columns:1fr 1fr 1fr}.kpi-row.head{display:none}.kpi-row .kc{border-top:1px solid var(--line-l)}.kpi-row .kc.prod{grid-column:1/-1}}
+
+/* ════ FECHAMENTO ════ */
+.close{justify-content:center;text-align:center;align-items:center}
+.close .inner{max-width:920px;position:relative;z-index:2}
+.close .glow{position:absolute;width:60vw;height:60vw;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(0,202,158,.14),transparent 60%)}
+.close .pre-req{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin:22px 0 40px}
+.close .rq{font-size:11.5px;font-weight:600;border:1px solid var(--line-d);border-radius:30px;padding:8px 14px;color:#cdd3d0;display:flex;align-items:center;gap:8px}
+.close .rq::before{content:'✓';color:var(--teal);font-weight:800}
+.close .big{font-size:clamp(2.4rem,7vw,5.5rem);margin-bottom:18px}
+.close .motto{font-family:'JetBrains Mono',monospace;font-size:clamp(12px,1.5vw,15px);letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-top:30px}
+.close .cta{margin-top:32px;display:inline-flex;align-items:center;gap:12px;background:var(--teal);color:var(--ink);font-weight:800;font-size:16px;padding:16px 30px;border-radius:50px;text-transform:lowercase}
+
+/* ════ LIQUID GLASS · verde Keepads (botões & pills) ════ */
+.pill,.chan,.rq{-webkit-backdrop-filter:blur(9px) saturate(1.7);backdrop-filter:blur(9px) saturate(1.7);background:rgba(0,202,158,.13)!important;border:1px solid rgba(0,202,158,.42)!important;color:#eafff8!important;
+  box-shadow:inset 1.5px 1.5px 1px -1px rgba(255,255,255,.6),inset -1.5px -1.5px 1px -1px rgba(255,255,255,.15),inset 0 0 10px 3px rgba(0,202,158,.10),0 4px 16px rgba(0,0,0,.2),0 0 16px rgba(0,202,158,.22)}
+.pill.solid{background:rgba(0,202,158,.24)!important}
+.chan .c-dot{background:#7fffe0}
+.rq::before{color:#7fffe0}
+.cta{-webkit-backdrop-filter:blur(9px) saturate(1.7);backdrop-filter:blur(9px) saturate(1.7);background:rgba(0,202,158,.9)!important;color:var(--ink)!important;
+  box-shadow:inset 2px 2px 1px -1px rgba(255,255,255,.85),inset -1px -1px 2px rgba(0,0,0,.12),0 6px 24px rgba(0,202,158,.4),0 0 22px rgba(0,202,158,.32)}
+
+/* ════ "A SACADA" · deck equilibrado (inclinado, legível, hover levanta e endireita) ════ */
+@keyframes deckin{from{opacity:0}to{opacity:1}}
+#s1 .three{perspective:1000px}
+#s1 .three .card{transform:skewY(-5deg);transform-origin:center;animation:deckin .65s ease both;border-width:1.5px;
+  box-shadow:0 16px 38px -12px rgba(13,13,13,.22),0 2px 8px rgba(13,13,13,.05);transition:transform .45s cubic-bezier(.22,1,.36,1),box-shadow .45s}
+#s1 .three .card:nth-child(1){transform:skewY(-5deg) translateY(12px);animation-delay:.05s}
+#s1 .three .card:nth-child(2){transform:skewY(-5deg) translateY(0);animation-delay:.16s}
+#s1 .three .card:nth-child(3){transform:skewY(-5deg) translateY(-12px);animation-delay:.27s}
+#s1 .three .card:hover{transform:skewY(0deg) translateY(-12px) scale(1.03);z-index:5;
+  box-shadow:0 28px 56px -14px rgba(0,202,158,.32),0 6px 14px rgba(13,13,13,.1)}
+
+/* ════ CRONOGRAMA · mesmo deck (3 fases) ════ */
+#s8 .timeline{perspective:1000px}
+#s8 .timeline .tl-phase{transform:skewY(-5deg);transform-origin:center;animation:deckin .65s ease both;box-shadow:0 16px 38px -12px rgba(13,13,13,.18),0 2px 8px rgba(13,13,13,.05);transition:transform .45s cubic-bezier(.22,1,.36,1),box-shadow .45s}
+#s8 .timeline .tl-phase:nth-child(1){transform:skewY(-5deg) translateY(12px);animation-delay:.05s}
+#s8 .timeline .tl-phase:nth-child(2){transform:skewY(-5deg) translateY(0);animation-delay:.16s}
+#s8 .timeline .tl-phase:nth-child(3){transform:skewY(-5deg) translateY(-12px);animation-delay:.27s}
+#s8 .timeline .tl-phase:hover{transform:skewY(0deg) translateY(-12px) scale(1.03);z-index:5;box-shadow:0 28px 56px -14px rgba(0,202,158,.32),0 6px 14px rgba(13,13,13,.1)}
+
+/* ════ O MODELO · mesmo deck (3 camadas) ════ */
+#s4 .three{perspective:1000px}
+#s4 .three .card{transform:skewY(-5deg);transform-origin:center;animation:deckin .65s ease both;box-shadow:0 16px 38px -12px rgba(13,13,13,.18),0 2px 8px rgba(13,13,13,.05);transition:transform .45s cubic-bezier(.22,1,.36,1),box-shadow .45s}
+#s4 .three .card:nth-child(1){transform:skewY(-5deg) translateY(12px);animation-delay:.05s}
+#s4 .three .card:nth-child(2){transform:skewY(-5deg) translateY(0);animation-delay:.16s}
+#s4 .three .card:nth-child(3){transform:skewY(-5deg) translateY(-12px);animation-delay:.27s}
+#s4 .three .card:hover{transform:skewY(0deg) translateY(-12px) scale(1.03);z-index:5;box-shadow:0 28px 56px -14px rgba(0,202,158,.32),0 6px 14px rgba(13,13,13,.1)}
+#s4 .note{margin-top:clamp(42px,5vw,60px)}
+
+/* ── ENTRADA: animação 100% CSS ── */
+@keyframes kp-rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes kp-grow{from{opacity:0;transform:scaleX(.12)}to{opacity:1;transform:scaleX(1)}}
+.reveal{animation:kp-rise .7s cubic-bezier(.22,1,.36,1) both}
+.reveal[data-d="1"]{animation-delay:.08s}.reveal[data-d="2"]{animation-delay:.16s}.reveal[data-d="3"]{animation-delay:.24s}
+.reveal[data-d="4"]{animation-delay:.32s}.reveal[data-d="5"]{animation-delay:.40s}.reveal[data-d="6"]{animation-delay:.48s}
+.b-fill{animation:kp-grow .85s cubic-bezier(.22,1,.36,1) both;animation-delay:var(--bd,.1s)}
+
+@media(max-width:820px){.two,.three,.goal-prod{grid-template-columns:1fr}.b-lbl{width:150px}.client-name{font-size:clamp(2.8rem,16vw,6rem)}.bighero{gap:18px}}
+@media(prefers-reduced-motion:reduce){.reveal,.b-fill{animation:none!important;opacity:1!important;transform:none!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="kp-logo">keep<b>ads</b><span class="dot"></span></span>
+  <span class="mode-hint">modo apresentação · ↑ ↓ navegam</span>
+</div>
+<nav class="dots" id="dots"></nav>
+
+<!-- ══════════════ 0 · CAPA ══════════════ -->
+<section class="slide ink" id="s0">
+  <div class="cover-bg"><div class="glow"></div><div class="mark">✳</div></div>
+  <div class="cover-top">
+    <span class="pill" style="border-color:var(--line-d);color:#cdd3d0"><span style="width:7px;height:7px;border-radius:50%;background:var(--teal)"></span>estratégia meta ads</span>
+    <span class="cover-spark spark reveal">✳</span>
+  </div>
+  <div class="cover-mid">
+    <div class="eyebrow reveal">plano de mídia &amp; performance · janela emergencial 2026</div>
+    <h1 class="giant client-name reveal" data-d="1"><span class="a">ugb</span> <span class="b">ferp</span></h1>
+    <div class="cover-codename reveal" data-d="2"><span class="cc-tag">a estratégia</span> captura do insatisfeito</div>
+    <div class="cover-sub reveal" data-d="2">Universidade Geraldo Di Biase · Volta Redonda · RJ</div>
+    <div class="cover-tags reveal" data-d="3">
+      <span class="pill solid">Medicina · transferência</span>
+      <span class="pill solid">Graduação · vestibular 2026.2</span>
+      <span class="pill" style="border-color:var(--line-d);color:#cdd3d0">até agosto/2026</span>
+    </div>
+  </div>
+  <div class="cover-bottom reveal" data-d="4">
+    <div class="channels">
+      <span class="chan"><span class="c-dot"></span>Meta Ads</span>
+      <span class="chan"><span class="c-dot"></span>Instagram</span>
+      <span class="chan"><span class="c-dot"></span>Facebook</span>
+      <span class="chan"><span class="c-dot"></span>WhatsApp</span>
+    </div>
+    <div class="cover-by">preparado por <b>keepads</b> · base: briefing estratégico jun/2026</div>
+  </div></section>
+
+<!-- ══════════════ 1 · A SACADA ══════════════ -->
+<section class="slide paper" id="s1">
+  <div class="wrap">
+    <div class="shead">
+      <div class="eyebrow reveal"><span class="b-dot"></span>a sacada</div>
+      <h2 class="statement reveal" data-d="1">a gente não cria a vontade. <em>captura quem já está insatisfeito.</em></h2>
+      <span class="tech-chip reveal" data-d="2"><span class="t-dot"></span>insatisfeito = público morno, já conhece o problema · o filtro real é o criativo (não dá pra segmentar "insatisfeito" no Meta)</span>
+    </div>
+    <div class="three">
+      <div class="card accent reveal" data-d="2"><div class="c-tag"><span class="spark">✳</span> quem é o insatisfeito</div><div class="c-role"><b style="color:inherit">Medicina:</b> quem já cursa o 1º período em outra faculdade e quer transferir. <b style="color:inherit">Graduação:</b> o adulto frustrado com o EAD / diploma fraco.</div></div>
+      <div class="card accent reveal" data-d="3"><div class="c-tag"><span class="spark">✳</span> o filtro é o criativo</div><div class="c-role">O anúncio fala direto com a dor. Quem se identifica levanta a mão sozinho. O criativo faz a segmentação que o Meta não faz.</div></div>
+      <div class="card accent reveal" data-d="4"><div class="c-tag"><span class="spark">✳</span> destino: WhatsApp</div><div class="c-role">Todo o tráfego vai pro <b style="color:inherit">WhatsApp com triagem</b> na 1ª mensagem. O site entra só pra remarketing quente.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 2 · DIVISOR ══════════════ -->
+<section class="slide teal divider" id="s2">
+  <span class="bigspark">✳</span>
+  <span class="tag-tl mono reveal">a estratégia keepads</span>
+  <div style="position:relative;z-index:2">
+    <div class="sec-no reveal" style="color:var(--ink)">/ 01 · o plano</div>
+    <h2 class="giant reveal" data-d="1">o plano</h2>
+    <div class="sub reveal" data-d="2">capturar o insatisfeito e matricular <span class="arrow-pill">→</span></div>
+  </div>
+</section>
+
+<!-- ══════════════ 3 · META ══════════════ -->
+<section class="slide ink goal" id="s3">
+  <div class="glow"></div>
+  <div class="inner">
+    <div class="eyebrow reveal"><span class="b-dot"></span>o impacto · até agosto 2026</div>
+    <div class="pre reveal" data-d="1">potencial de receita recorrente destravada</div>
+    <div class="num reveal" data-d="2"><span class="cur">R$</span><span id="countup" data-from="4" data-to="49.7" data-dec="1">49,7</span><span class="suf">mil/mês</span></div>
+    <div class="goal-prod reveal" data-d="3">
+      <div class="gp">
+        <div class="gp-name"><span class="spark">✳</span> Medicina · transferência</div>
+        <div class="gp-row"><span class="l">leads / mês</span><span class="v tl">7 a 10</span></div>
+        <div class="gp-row"><span class="l">matrículas-meta</span><span class="v">3 a 6</span></div>
+        <div class="gp-row"><span class="l">receita recorrente</span><span class="v">até R$ 42,5 mil/mês</span></div>
+      </div>
+      <div class="gp">
+        <div class="gp-name"><span class="spark">✳</span> Graduação · vestibular</div>
+        <div class="gp-row"><span class="l">leads / mês</span><span class="v tl">45 a 60</span></div>
+        <div class="gp-row"><span class="l">matrículas-meta</span><span class="v">6 a 10</span></div>
+        <div class="gp-row"><span class="l">receita recorrente</span><span class="v">até R$ 7,2 mil/mês</span></div>
+      </div>
+    </div>
+    <p class="goal-note reveal" data-d="4">Com <b>R$ 4 mil de verba</b> (R$ 2 mil/produto) na fase de <b>validação</b>, não de escala. Cada matrícula de Medicina vale <b>R$ 8.500 × ~6 anos</b>.</p>
+  </div>
+</section>
+
+<!-- ══════════════ 4 · O MODELO ══════════════ -->
+<section class="slide paper" id="s4">
+  <div class="wrap">
+    <div class="shead">
+      <div class="eyebrow reveal"><span class="b-dot"></span><span class="sec-no">/ 02</span> o modelo · 3 camadas</div>
+      <h2 class="statement reveal" data-d="1">três camadas que <em>se alimentam</em></h2>
+    </div>
+    <div class="three">
+      <div class="card accent layer-card reveal" data-d="1"><span class="lc-n">01</span><div class="c-tag"><span class="spark">✳</span> topo</div><h3>Engajamento · ThruPlay</h3><div class="c-role">Vídeo que gera engajamento barato. Quem assiste vira audiência de remarketing: <b style="color:inherit">constrói o público quente.</b></div><div class="c-foot">→ alimenta as camadas de baixo</div></div>
+      <div class="card accent layer-card reveal" data-d="2"><span class="lc-n">02</span><div class="c-tag"><span class="spark">✳</span> conversão direta</div><h3>WhatsApp · Advantage+</h3><div class="c-role">Campanha de conversa otimizada. <b style="color:inherit">O algoritmo acha quem está pronto</b> e manda direto pro WhatsApp.</div><div class="c-foot">→ o motor de leads</div></div>
+      <div class="card accent layer-card reveal" data-d="3"><span class="lc-n">03</span><div class="c-tag"><span class="spark">✳</span> fundo</div><h3>Retargeting → WhatsApp</h3><div class="c-role">Cerca quem já interagiu, com <b style="color:inherit">urgência de prazo</b> ("17 vagas", "últimos dias 2026.2").</div><div class="c-foot">→ fecha o cerco</div></div>
+    </div>
+    <div class="note reveal" data-d="4"><span class="n-k">a regra de ouro do destino</span><b>Destino sempre WhatsApp</b>, com triagem na 1ª mensagem. O site entra <b>só pra remarketing quente</b>. A decisão acontece na conversa.</div>
+  </div>
+</section>
+
+<!-- ══════════════ 5 · MEDICINA ══════════════ -->
+<section class="slide ink" id="s5">
+  <div class="wrap">
+    <div class="shead">
+      <div class="eyebrow reveal"><span class="b-dot"></span><span class="sec-no">/ 03</span> produto · prioridade máxima</div>
+      <h2 class="statement reveal" data-d="1">Medicina · <em>transferência</em></h2>
+      <span class="tech-chip reveal" data-d="2"><span class="t-dot"></span>17 vagas · ticket R$ 8.500 × ~6 anos · R$ 2.000/mês (~R$ 66/dia)</span>
+    </div>
+    <div class="two">
+      <div class="card reveal" data-d="2">
+        <div class="c-tag"><span class="spark">✳</span> estrutura da conta</div>
+        <div class="meta-line">
+          <div class="ml"><span class="ml-k">geografia</span><span class="ml-v">RJ + Sul MG + Vale do Paraíba + divisa ES</span></div>
+          <div class="ml"><span class="ml-k">idade</span><span class="ml-v">19 a 45 (candidato + pai/mãe)</span></div>
+        </div>
+        <div class="budget">
+          <div class="b-row"><div class="b-lbl">Conversão · WhatsApp Adv+<span>o motor</span></div><div class="b-track"><div class="b-fill" style="width:91%;background:linear-gradient(90deg,#00a884,#00CA9E);--bd:.15s">R$ 32/dia</div></div><div class="b-val">~48%</div></div>
+          <div class="b-row"><div class="b-lbl">Retargeting · WhatsApp<span>o cerco</span></div><div class="b-track"><div class="b-fill" style="width:51%;background:linear-gradient(90deg,#1d8f78,#00a884);--bd:.25s">R$ 18/dia</div></div><div class="b-val">~27%</div></div>
+          <div class="b-row"><div class="b-lbl">Topo · ThruPlay<span>o público</span></div><div class="b-track"><div class="b-fill" style="width:46%;background:#2b302d;--bd:.35s">R$ 16/dia</div></div><div class="b-val">~24%</div></div>
+        </div>
+        <div class="budget-total"><span>total Medicina</span><b>~R$ 66/dia</b></div>
+      </div>
+      <div class="card reveal" data-d="3">
+        <div class="c-tag"><span class="spark">✳</span> público &amp; abordagem</div>
+        <div class="layers">
+          <div class="layer"><div class="ly-k">interesses + lookalike</div><div class="ly-txt">Outras faculdades de Medicina, ENEM, Revalida, cursinhos (Sanar, Jaleko, Medcel) · lookalike da base quando o Pixel tiver volume.</div></div>
+          <div class="layer"><div class="ly-k">triagem na 1ª mensagem</div><div class="ly-txt"><b>"Já cursa o 1º período em outra instituição?"</b></div></div>
+          <div class="layer"><div class="ly-k">objeção a quebrar</div><div class="ly-txt">"Curso novo" → <b>1ª turma + entrega de jaleco + Dr. Kalil.</b></div></div>
+          <div class="layer excl"><div class="ly-k">exclusões</div><div class="ly-txt">Matriculados, leads convertidos, alunos atuais.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 6 · GRADUAÇÃO ══════════════ -->
+<section class="slide paper" id="s6">
+  <div class="wrap">
+    <div class="shead">
+      <div class="eyebrow reveal"><span class="b-dot"></span><span class="sec-no">/ 04</span> produto</div>
+      <h2 class="statement reveal" data-d="1">Graduação · <em>vestibular 2026.2</em></h2>
+      <span class="tech-chip reveal" data-d="2"><span class="t-dot"></span>adulto que trabalha · R$ 2.000/mês (~R$ 66/dia) · gancho anti-EAD + Programa Formar 50%</span>
+    </div>
+    <div class="two">
+      <div class="card reveal" data-d="2">
+        <div class="c-tag"><span class="spark">✳</span> estrutura da conta</div>
+        <div class="meta-line">
+          <div class="ml"><span class="ml-k">geografia</span><span class="ml-v">raio 30 a 40 km do campus VR</span></div>
+          <div class="ml"><span class="ml-k">idade</span><span class="ml-v">25 a 45 (adulto que trabalha)</span></div>
+        </div>
+        <div class="tag-list" style="margin-bottom:16px"><span class="tg">Volta Redonda</span><span class="tg">Barra Mansa</span><span class="tg">Barra do Piraí</span><span class="tg">Porto Real</span><span class="tg">Resende</span><span class="tg">Pinheiral</span><span class="tg">Piraí</span><span class="tg">Rio Claro</span></div>
+        <div class="budget">
+          <div class="b-row"><div class="b-lbl">Conversão · WhatsApp<span>o motor</span></div><div class="b-track"><div class="b-fill" style="width:100%;background:linear-gradient(90deg,#00a884,#00CA9E);--bd:.15s">R$ 35/dia</div></div><div class="b-val">~53%</div></div>
+          <div class="b-row"><div class="b-lbl">Retargeting · WhatsApp<span>o cerco</span></div><div class="b-track"><div class="b-fill" style="width:51%;background:linear-gradient(90deg,#1d8f78,#00a884);--bd:.25s">R$ 18/dia</div></div><div class="b-val">~27%</div></div>
+          <div class="b-row"><div class="b-lbl">Topo · ThruPlay<span>o público</span></div><div class="b-track"><div class="b-fill" style="width:37%;background:#2b302d;--bd:.35s">R$ 13/dia</div></div><div class="b-val">~20%</div></div>
+        </div>
+        <div class="budget-total"><span>total Graduação</span><b>~R$ 66/dia</b></div>
+      </div>
+      <div class="card reveal" data-d="3">
+        <div class="c-tag"><span class="spark">✳</span> público &amp; abordagem</div>
+        <div class="layers">
+          <div class="layer"><div class="ly-k">interesses</div><div class="ly-txt">EAD / faculdades a distância, recolocação profissional, ENEM · cursos de demanda (Direito, Engenharia, Arquitetura).</div></div>
+          <div class="layer"><div class="ly-k">o gancho</div><div class="ly-txt">Insatisfação com o <b>EAD / diploma fraco</b> + <b>Programa Formar 50%</b> (âncora R$ 1.600 → R$ 900).</div></div>
+          <div class="layer"><div class="ly-k">posicionamento</div><div class="ly-txt">"O presencial que funciona": credibilidade + estrutura para quem já trabalha.</div></div>
+          <div class="layer excl"><div class="ly-k">exclusões</div><div class="ly-txt">Matriculados, leads convertidos, alunos atuais.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 7 · CRIATIVOS ══════════════ -->
+<section class="slide ink" id="s7">
+  <div class="wrap">
+    <div class="shead">
+      <div class="eyebrow reveal"><span class="b-dot"></span><span class="sec-no">/ 05</span> criativos</div>
+      <h2 class="statement reveal" data-d="1">aluno real, <em>dor no gancho</em></h2>
+      <span class="tech-chip reveal" data-d="2"><span class="t-dot"></span>Reels 9:16 · 20 a 35s · gancho nos 3s · legenda queimada · CTA único · mín. 3 variações</span>
+    </div>
+    <div class="two">
+      <div class="card accent reveal" data-d="2">
+        <div class="c-tag"><span class="spark">✳</span> Medicina · 3 ângulos</div>
+        <ul class="detail">
+          <li><b>R1 · Dor racional</b>: preço + 9.000h + impacto no ENAMED.</li>
+          <li><b>R2 · Quebra de objeção "curso novo"</b>: reitor PhD, Dr. Kalil, entrega de jaleco.</li>
+          <li><b>R3 · Emocional + urgência</b>: "não perde o período · 17 vagas".</li>
+        </ul>
+      </div>
+      <div class="card accent reveal" data-d="3">
+        <div class="c-tag"><span class="spark">✳</span> Graduação · gancho único</div>
+        <ul class="detail">
+          <li><b>Anti-EAD</b>: "o presencial que funciona" vs. diploma fraco.</li>
+          <li><b>Bolsa 50%</b>: Programa Formar, dá pra começar agora.</li>
+          <li><b>Estrutura</b>: feita para o adulto que trabalha.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 8 · VERBA & SPRINT ══════════════ -->
+<section class="slide paper" id="s8">
+  <div class="wrap">
+    <div class="shead">
+      <div class="eyebrow reveal"><span class="b-dot"></span><span class="sec-no">/ 06</span> verba &amp; sprint</div>
+      <h2 class="statement reveal" data-d="1">~25% topo, <em>~75% conversão + retargeting</em></h2>
+      <span class="tech-chip reveal" data-d="2"><span class="t-dot"></span>R$ 2.000/mês por produto (~R$ 66/dia) · produtos 100% segregados</span>
+    </div>
+    <div class="timeline">
+      <div class="tl-phase reveal" data-d="1"><div class="tl-bar"></div><div class="tl-k">fase 01</div><div class="tl-when">setup</div><div class="tl-h">subir</div><div class="tl-p">Subir topo + conversão. Pixel/CAPI ativos e validados.</div></div>
+      <div class="tl-phase reveal" data-d="2"><div class="tl-bar"></div><div class="tl-k">fase 02</div><div class="tl-when">aquecer</div><div class="tl-h">otimizar</div><div class="tl-p">Ligar retargeting. Pausar criativo CTR &lt; 0,8%. Escalar +20% no CPL bom.</div></div>
+      <div class="tl-phase reveal" data-d="3"><div class="tl-bar"></div><div class="tl-k">fase 03</div><div class="tl-when">renovar</div><div class="tl-h">urgência</div><div class="tl-p">Renovar criativos (saturam em 7 a 14 dias). Ligar a urgência de prazo.</div></div>    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 9 · OPERAÇÃO ══════════════ -->
+<section class="slide ink" id="s9">
+  <div class="wrap">
+    <div class="shead">
+      <div class="eyebrow reveal"><span class="b-dot"></span><span class="sec-no">/ 07</span> operação · regras fixas</div>
+      <h2 class="statement reveal" data-d="1">o jogo se ganha no <em>pós-clique</em></h2>
+    </div>
+    <div class="bighero reveal" data-d="2">
+      <div class="bh-num">&lt; 10<span class="bh-u">min</span></div>
+      <div class="bh-t">
+        <div class="bh-h">tempo de resposta ao lead</div>
+        <div class="bh-p">Speed-to-lead é a <b style="color:#fff">maior alavanca de conversão</b> da operação inteira. Lead que espera, esfria. Responder em minutos é o que vira conversa em matrícula.</div>
+      </div>
+    </div>
+    <div class="three" style="margin-top:18px">
+      <div class="card reveal" data-d="2"><div class="c-tag"><span class="spark">✳</span> triagem</div><div class="c-role">Triagem já na <b style="color:inherit">1ª mensagem</b> + lead classificado por curso e origem (UTM + WhatsApp).</div></div>
+      <div class="card reveal" data-d="3"><div class="c-tag"><span class="spark">✳</span> público de retargeting</div><div class="c-role">Se o público ficar <b style="color:inherit">&lt; 1.000</b>, consolidar conjuntos para não fragmentar a entrega.</div></div>
+      <div class="card reveal" data-d="4"><div class="c-tag"><span class="spark">✳</span> segregação total</div><div class="c-role">Produtos <b style="color:inherit">100% segregados</b>: verba, criativo e geografia nunca se misturam.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 10 · METAS & IMPACTO ══════════════ -->
+<section class="slide paper" id="s10">
+  <div class="wrap">
+    <div class="shead">
+      <div class="eyebrow reveal"><span class="b-dot"></span><span class="sec-no">/ 08</span> metas &amp; impacto</div>
+      <h2 class="statement reveal" data-d="1">a métrica-rei é <em>lead → matrícula</em></h2>
+      <span class="tech-chip reveal" data-d="2"><span class="t-dot"></span>o gargalo é comercial (atendimento + velocidade), não o CPL</span>
+    </div>
+    <div class="two">
+      <div class="card accent reveal" data-d="2">
+        <div class="c-tag"><span class="spark">✳</span> antes de prometer, pesquisamos</div>
+        <h3>Pesquisa de mercado</h3>
+        <div class="c-role">Levantamos o <b style="color:inherit">custo médio do lead qualificado</b> no segmento de educação (Medicina e Graduação) pra ancorar a estratégia em <b style="color:inherit">dado real de mercado</b>, não em achismo. As faixas ao lado são <b style="color:inherit">referência</b>, calibradas conforme a operação roda.</div>
+      </div>
+      <div class="card reveal" data-d="3">
+        <div class="c-tag"><span class="spark">✳</span> referência de mercado · custo por lead</div>
+        <div class="layers">
+          <div class="layer"><div class="ly-k">Medicina</div><div class="ly-txt">~<b>R$ 200 a 280</b> por lead qualificado · ticket R$ 8.500 × ~6 anos</div></div>
+          <div class="layer"><div class="ly-k">Graduação</div><div class="ly-txt">~<b>R$ 30 a 40</b> por lead qualificado · com Programa Formar 50%</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="king reveal" data-d="4"><span class="spark">✳</span> A meta real é <b>lead → matrícula</b>. Como é fase de validação, a gente <b>não crava volume</b>. Calibramos com o mercado respondendo. O que perseguimos é <b>eficiência (CPL de mercado)</b> e o funil destravado.</div>
+  </div>
+</section>
+
+<!-- ══════════════ 11 · FECHAMENTO ══════════════ -->
+<section class="slide ink close" id="s11">
+  <div class="glow"></div>
+  <div class="inner">
+    <div class="eyebrow reveal" style="justify-content:center"><span class="b-dot"></span>pré-requisitos do pós-clique</div>
+    <div class="pre-req reveal" data-d="1">
+      <span class="rq">LP/hot-site externa por produto</span><span class="rq">Pixel + CAPI</span><span class="rq">classificação de lead (UTM + WhatsApp)</span><span class="rq">follow-up ativo · Francisco</span>
+    </div>
+    <h2 class="giant big reveal" data-d="2">vamos subir <span class="spark">e rodar.</span></h2>
+    <div class="motto reveal" data-d="3">consistência · disciplina · resultado</div>
+    <div class="reveal" data-d="4"><span class="cta">próximo passo: aprovar e subir as campanhas <span>→</span></span></div>
+  </div>
+</section>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+const dotsNav=document.getElementById('dots');
+let idx=0, counted=false;
+slides.forEach(function(s){const b=document.createElement('button');b.onclick=function(){s.scrollIntoView({behavior:'smooth'});};dotsNav.appendChild(b);});
+const dots=[...dotsNav.children];
+if(dots[0])dots[0].classList.add('active');
+document.body.dataset.theme='ink';
+
+const io=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(!e.isIntersecting)return;
+    document.body.dataset.theme=e.target.classList.contains('teal')?'teal':(e.target.classList.contains('paper')?'paper':'ink');
+    const i=slides.indexOf(e.target);
+    if(i>-1){dots.forEach(function(d){d.classList.remove('active');});if(dots[i])dots[i].classList.add('active');idx=i;}
+    if(e.target.id==='s3')runCount();
+  });
+},{threshold:.5});
+slides.forEach(function(s){io.observe(s);});
+
+function runCount(){
+  if(counted)return;counted=true;
+  const el=document.getElementById('countup');if(!el)return;
+  const from=+el.dataset.from,to=+el.dataset.to,dec=+(el.dataset.dec||0),dur=1600,t0=performance.now();
+  function tick(now){
+    const p=Math.min((now-t0)/dur,1),ease=1-Math.pow(1-p,3),v=from+(to-from)*ease;
+    el.textContent=v.toLocaleString('pt-BR',{minimumFractionDigits:dec,maximumFractionDigits:dec});
+    if(p<1)requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+function go(n){idx=Math.max(0,Math.min(slides.length-1,n));slides[idx].scrollIntoView({behavior:'smooth'});}
+window.addEventListener('keydown',function(e){
+  if(e.key==='ArrowDown'||e.key==='PageDown'||e.key===' '){e.preventDefault();go(idx+1);}
+  else if(e.key==='ArrowUp'||e.key==='PageUp'){e.preventDefault();go(idx-1);}
+});
+</script>
+</body>
+</html>
